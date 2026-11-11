@@ -63,3 +63,10 @@ going and may find a config file in your home directory or in `/`. The
 function does not stop at a repository boundary, a `.git` directory, or any
 other marker. If you need that, check the returned path against the
 directory you consider the boundary.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
